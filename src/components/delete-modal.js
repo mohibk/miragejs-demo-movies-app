@@ -28,6 +28,9 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
   },
+  deleteBtn: {
+    marginRight: "1rem",
+  },
 }));
 
 export default function DeleteModal({ movieDeleteHandler, id }) {
@@ -52,13 +55,14 @@ export default function DeleteModal({ movieDeleteHandler, id }) {
   const body = (
     <div style={modalStyle} className={classes.paper}>
       <h2 id="simple-modal-title">Delete Movie</h2>
-      <p id="simple-modal-description">Are you sure, you want to delete</p>
+      <p id="simple-modal-description">Are you sure, you want to delete?</p>
 
       <Button
         onClick={handleDelete}
         type="button"
         variant="contained"
         color="secondary"
+        className={classes.deleteBtn}
       >
         Yes
       </Button>
