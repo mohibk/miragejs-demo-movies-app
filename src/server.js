@@ -12,6 +12,7 @@ createServer({
 
   seeds(server) {
     const matt = server.create("actor", { name: "Matthew McConaughey" });
+    const nat = server.create("actor", { name: "Natalie Portman" });
     const anne = server.create("actor", { name: "Anne Hathaway" });
     const jess = server.create("actor", { name: "Jessica Chastain" });
     const leo = server.create("actor", { name: "Leornado Dicaprio" });
@@ -20,7 +21,7 @@ createServer({
     server.create("movie", {
       name: "Inception",
       year: 2010,
-      actors: [matt, rachel],
+      actors: [nat, rachel],
     });
     server.create("movie", {
       name: "Interstellar",

@@ -16,13 +16,23 @@ import EditIcon from "@material-ui/icons/Edit";
 import ViewActorsModal from "./components/movie-actors";
 
 const useStyles = makeStyles({
-  table: {
-    minWidth: 650,
-    margin: "3rem",
+  form: {
+    margin: "0 auto",
+    width: 768,
   },
-
+  tableContainer: {
+    margin: "0 auto",
+    width: 768,
+  },
+  table: {
+    margin: "3rem 0",
+  },
   input: {
     margin: "3rem",
+  },
+  actions: {
+    display: "flex",
+    justifyContent: "space-around",
   },
 });
 
@@ -138,7 +148,7 @@ export default function App() {
 
   return (
     <>
-      <form onSubmit={formSubmitHandler}>
+      <form className={classes.form} onSubmit={formSubmitHandler}>
         <Input
           name="name"
           value={name}
@@ -158,14 +168,14 @@ export default function App() {
         </Button>
       </form>
       {movies?.length > 0 ? (
-        <TableContainer component={Paper}>
+        <TableContainer className={classes.tableContainer} component={Paper}>
           <Table className={classes.table} aria-label="simple table">
             <TableHead>
               <TableRow>
                 <TableCell>No</TableCell>
                 <TableCell>Movie</TableCell>
                 <TableCell>Year</TableCell>
-                <TableCell>Actions</TableCell>
+                <TableCell className={classes.actions}>Actions</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -176,7 +186,7 @@ export default function App() {
                   </TableCell>
                   <TableCell>{movie?.name}</TableCell>
                   <TableCell>{movie?.year}</TableCell>
-                  <TableCell>
+                  <TableCell className={classes.actions}>
                     <DeleteModal
                       color="secondary"
                       movieDeleteHandler={movieDeleteHandler}
