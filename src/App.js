@@ -43,6 +43,7 @@ export default function App() {
   const [year, setYear] = useState("");
   const [updatingMovie, setUpdatingMovie] = useState(false);
   const classes = useStyles();
+  const isInvalid = name === "" || year === "";
 
   useEffect(() => {
     fetch("/api/movies")
@@ -148,7 +149,12 @@ export default function App() {
 
   return (
     <>
-      <form className={classes.form} onSubmit={formSubmitHandler}>
+      <form
+        className={classes.form}
+        onSubmit={(e) =>
+          isInvalid ? e.preventDefault() : formSubmitHandler(e)
+        }
+      >
         <Input
           name="name"
           value={name}
@@ -163,7 +169,12 @@ export default function App() {
           className={classes.input}
           type="number"
         />
-        <Button type="submit" variant="contained" color="primary">
+        <Button
+          disabled={isInvalid}
+          type="submit"
+          variant="contained"
+          color="primary"
+        >
           {updatingMovie ? "Update" : "Create"}
         </Button>
       </form>
